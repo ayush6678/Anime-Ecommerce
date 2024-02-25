@@ -1,7 +1,7 @@
-import { CheckBox, LockOpen, Visibility, VisibilityOff } from "@mui/icons-material";
+import {  LockOpen, Visibility, VisibilityOff } from "@mui/icons-material";
 import { Avatar, Button, Checkbox, FormControlLabel, Grid, TextField, Typography } from "@mui/material";
 import "./LoginFormStyle.css";
-import { useState, useEffect } from "react";
+import { useState } from "react";
 import { Link } from "react-router-dom";
 
 function Login() {
