@@ -9,7 +9,7 @@ import { Link } from "react-router-dom";
 import Sidebar from "./Sidebar";
 // import { useSelector } from "react-redux";
 
-import ProfileModal from "./ProfileModel";
+// import ProfileModal from "./ProfileModel";
 
 function Header() {
   // const history = useHistory();
@@ -17,7 +17,7 @@ function Header() {
 
   const [searchBarActive, setSearchBarActive] = useState(false);
 
-  const [country, setCountry] = useState("in"); // this is for flag
+  // const [country, setCountry] = useState("in"); // this is for flag
   const [sideMenu, setSideMenu] = useState(false);
   const [searchValue, setSearchValue] = useState("");
 
