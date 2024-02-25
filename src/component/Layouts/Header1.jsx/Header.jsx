@@ -127,11 +127,11 @@ function Header() {
           </div>
           {!searchBarActive && (
             <Link to="/">
-              <img
+              {/* <img
                 src={require("../../../Image/logo.png")}
                 alt="logo"
                 className="headerBottom__logo_main"
-              />
+              /> */}
             </Link>
           )}
 
