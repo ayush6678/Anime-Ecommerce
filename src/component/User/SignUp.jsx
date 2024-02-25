@@ -1,8 +1,8 @@
 import { Avatar, Button, Checkbox, FormControlLabel, Grid, TextField, Typography } from "@mui/material";
 import "./LoginFormStyle.css";
 import { useState } from "react";
-import { Link, Navigate } from "react-router-dom";
-import { CheckBox, CloudUpload, LockOutlined, Visibility, VisibilityOff } from "@mui/icons-material";
+import { Link, } from "react-router-dom";
+import { CloudUpload, LockOutlined, Visibility, VisibilityOff } from "@mui/icons-material";
 function SignUp() {
 
 
@@ -135,7 +135,7 @@ function SignUp() {
                         color: "#414141",
                         fontWeight: "bold",
                     }} >
-                        Sign Up for an Account 
+                        Sign Up for an Account
                     </Typography>
                     <TextField
                         label="Name"
