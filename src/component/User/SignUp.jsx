@@ -5,7 +5,6 @@ import { Link, } from "react-router-dom";
 import { CloudUpload, LockOutlined, Visibility, VisibilityOff } from "@mui/icons-material";
 function SignUp() {
 
-
     const [showPassword, setShowPassword] = useState(false);
     const [name, setName] = useState("");
     const [email, setEmail] = useState("");

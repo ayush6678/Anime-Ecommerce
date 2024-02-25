@@ -4,6 +4,9 @@ import SignUp from "./component/User/SignUp";
 import ForgotPassword from "./component/User/ForgetPassword";
 import Home from "./component/Home/Home";
 import Header from "./component/Layouts/Header1.jsx/Header";
+import AboutUs from "./Terms&Condtions/Aboutus";
+import ContactUs from "./Terms&Condtions/Contact";
+import Footer from "./component/Layouts/Footer/Footer";
 
 function App() {
   return (
@@ -17,6 +20,7 @@ function App() {
               <>
                 <Header />
                 <Home />
+                <Footer />
               </>
             } />
           <Route
@@ -39,6 +43,31 @@ function App() {
             element={
               <ForgotPassword />
             } />
+
+          <Route
+            exact
+            path="/about_us"
+            element={
+              <>
+                {<Header />}
+                <AboutUs />
+                <Footer />
+              </>
+            }
+          />
+
+          <Route
+            exact
+            path="/contact"
+            element={
+              <>
+                {<Header />}
+                <ContactUs />
+                <Footer />
+
+              </>
+            }
+          />
         </Routes>
 
       </BrowserRouter>
