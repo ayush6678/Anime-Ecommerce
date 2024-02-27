@@ -1,7 +1,7 @@
 import React from "react";
 import { Link } from "react-router-dom";
 import "./Return.css"
-import MetaData from "../component/layouts/MataData/MataData";
+import MetaData from "../component/Layouts/MetaData/MetaData";
 import TermsImage from "../Image/about/tc.jpg";
 const ReturnPolicyPage = () => {
   return (
@@ -16,7 +16,7 @@ const ReturnPolicyPage = () => {
       </div>
       <div className="content-container">
         <p>
-          Thank you for shopping with CricketWeapon! We want to ensure your
+          Thank you for shopping with Atrangi! We want to ensure your
           satisfaction with every purchase. If you are not completely satisfied
           with your purchase, we offer a return policy of 30 days for most
           products and 7 days for select products.
@@ -55,12 +55,12 @@ const ReturnPolicyPage = () => {
         <p>
           Customer Service Department
           <br />
-          <span style={{ fontWeight: "500" }}>Email </span>: 
-          support@cricketweapon.com
+          <span style={{ fontWeight: "500" }}>Email </span>:
+          support@Atrangi.com
           <br />
           <span style={{ fontWeight: "500" }}>Phone  </span>:  123-456-7890
           <br />
-      <span style={{ fontWeight: "500" }}>    Hours of Operation: Monday to Friday, 9:00 AM to 5:00 PM (GMT) </span>
+          <span style={{ fontWeight: "500" }}>    Hours of Operation: Monday to Friday, 9:00 AM to 5:00 PM (GMT) </span>
         </p>
         <p>
           Please reach out to us if you have any concerns or require any

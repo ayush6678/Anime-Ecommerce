@@ -1,20 +1,19 @@
 import React from "react";
-import {Link} from "react-router-dom";
+import { Link } from "react-router-dom";
 import "./Privacy.css";
-import MetaData from "../component/layouts/MataData/MataData";
-
+import MetaData from "../component/Layouts/MetaData/MetaData";
 const PrivacyPolicy = () => {
   return (
     <div className="privacy-policy-container">
-     <MetaData title={"Privacy Policy"} />
+      <MetaData title={"Privacy Policy"} />
       <div className="container___">
-        <h1>Privacy Policy of CricketWeapon</h1>
+        <h1>Privacy Policy of Atrangi</h1>
         <p style={{ fontSize: "16px", fontWeight: "600" }}>
           {" "}
           Effective Date: 23-12-2021
         </p>
         <p>
-          At CricketWeapon, we value the privacy of our customers and are
+          At Atrangi, we value the privacy of our customers and are
           committed to protecting your personal information. This Privacy Policy
           explains how we collect, use, disclose, and safeguard your information
           when you use our website and services. Please read this Privacy Policy
@@ -112,12 +111,12 @@ const PrivacyPolicy = () => {
         <p>
           If you have any questions, concerns, or suggestions regarding this
           Privacy Policy, please contact us at{" "}
-          <Link to="/" style={{ textDecoration : "none" , color : "inherit" , fontWeight : 700}}>
+          <Link to="/" style={{ textDecoration: "none", color: "inherit", fontWeight: 700 }}>
             [insert contact information]
           </Link>
         </p>
         <p>
-          By using the CricketWeapon website and services, you agree to the
+          By using the Atrangi website and services, you agree to the
           collection, use, and disclosure of your information as described in
           this Privacy Policy.
         </p>

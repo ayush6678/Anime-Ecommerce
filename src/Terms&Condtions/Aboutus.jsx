@@ -141,7 +141,7 @@ const AboutUs = () => {
             textAlign: "justify",
             padding: "0.8rem 1rem",
           }}>
-            At CricketWeapon, we believe in fostering long-term relationships
+            At Atrangi, we believe in fostering long-term relationships
             with our customers. We provide excellent customer service and strive
             to exceed expectations at every step. We are committed to delivering
             a seamless online shopping experience and ensuring customer
