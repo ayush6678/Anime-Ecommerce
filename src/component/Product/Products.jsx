@@ -43,7 +43,7 @@ function Products() {
   const dispatch = useDispatch();
   const {
     products,
-    loading,
+    // loading,
     productsCount,
     error,
     resultPerPage,

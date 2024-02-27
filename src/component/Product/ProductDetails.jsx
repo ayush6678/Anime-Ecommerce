@@ -20,11 +20,11 @@ import useActive from "../hook/useActive";
 import ReviewCard from "./ReviewCard";
 import {
   clearErrors,
-  getProductDetails,
+  // getProductDetails,
 } from "../../actions/productAction";
 // import { useAlert } from "react-alert";
 import MetaData from "../Layouts/MetaData/MetaData";
-import { addItemToCart } from "../../actions/cartAction";
+// import { addItemToCart } from "../../actions/cartAction";
 // import CricketBallLoader from "../layouts/loader/Loader";
 import Button from "@mui/material/Button";
 import { PRODUCT_DETAILS_RESET } from "../../constants/productsConstants";
@@ -41,9 +41,11 @@ const ProductDetails = () => {
   const [previewImg, setPreviewImg] = useState("");
   const { handleActive, activeClass } = useActive(0);
 
-  const { product, loading, error, success } = useSelector(
-    (state) => state.productDetails
-  );
+  const { product,
+    // loading,
+    error, success } = useSelector(
+      (state) => state.productDetails
+    );
 
 
   useEffect(() => {

@@ -1,4 +1,4 @@
-import React, { useState , useEffect} from "react";
+import React, { useState, useEffect } from "react";
 import { useStyles } from "./ReviewStyle";
 import {
   Dialog,
@@ -68,13 +68,13 @@ const DialogBox = ({ open, handleClose, id }) => {
     myForm.set("comment", comment);
     myForm.set("ratings", ratings);
     myForm.set("recommend", recommend);
-    if(id){
-          myForm.set("productId", id);
-    }else{
-          myForm.set("productId", productId);
+    if (id) {
+      myForm.set("productId", id);
+    } else {
+      myForm.set("productId", productId);
     }
     dispatch(newReview(myForm));
-      alert.success("Review posted successfully");
+    alert.success("Review posted successfully");
     handleClose();
   };
 
@@ -87,7 +87,9 @@ const DialogBox = ({ open, handleClose, id }) => {
       alert.success("Review posted successfully");
       dispatch({ type: NEW_REVIEW_RESET });
     }
-  }, [dispatch, alert, error, success]);
+  }, [dispatch,
+    // alert,
+    error, success]);
 
   return (
     <Dialog
