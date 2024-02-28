@@ -16,7 +16,21 @@ import "./App.css";
 import Cart from "./component/Cart/Cart";
 import ProductDetails from "./component/Product/ProductDetails";
 import Products from "./component/Product/Products";
-
+// import Route from "./component/Route/Route";
+import { lazy } from "react";
+// const LazyPayment = lazy(() => import("./component/Cart/Payment"));
+import Dashboard from "./component/Admin/Dashboard";
+import ProductList from "./component/Admin/ProductList";
+import OrderList from "./component/Admin/OrderList";
+import UserList from "./component/Admin/UserList";
+import UpdateProduct from "./component/Admin/UpdateProduct";
+import ProcessOrder from "./component/Admin/ProcessOrder";
+// import UpdateProduct from "./component/Admin/UpdateProduct";
+import NewProduct from "./component/Admin/NewProduct";
+import ProductReviews from "./component/Admin/ProductReviews";
+const LazyProductReviews = lazy(() =>
+  import("./component/Admin/ProductReviews")
+);
 function App() {
   return (
     <div className="App">
@@ -94,7 +108,7 @@ function App() {
               </>
             }
           />
-          
+
           <Route
             path="/products/:keyword"
             element={
@@ -183,6 +197,65 @@ function App() {
               </>
             }
           />
+
+
+          {/* private Routes */}
+
+          <Route
+
+            exact
+            path="/admin/dashboard"
+            element={<Dashboard />}
+          />
+
+          <Route
+
+            exact
+            path="/admin/products"
+            element={<ProductList />}
+          />
+          <Route
+
+            exact
+            path="/admin/product/:id"
+            element={<UpdateProduct />}
+          />
+          <Route
+
+            exact
+            path="/admin/reviews"
+            element={<ProductReviews />}
+          />
+          <Route
+
+            exact
+            path="/admin/orders"
+            element={<OrderList />}
+          />
+          <Route
+
+            exact
+            path="/admin/order/:id"
+            element={<ProcessOrder />}
+          />
+          <Route
+
+            exact
+            path="/admin/new/product"
+            element={<NewProduct />}
+          />
+          <Route
+
+            exact
+            path="/admin/users"
+            element={<UserList />}
+          />
+          {/* <Route
+
+            exact
+            path="/admin/user/:id"
+            element={UpdateUser}
+          /> */}
         </Routes>
 
       </BrowserRouter>

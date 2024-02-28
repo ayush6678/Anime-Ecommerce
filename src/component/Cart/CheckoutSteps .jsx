@@ -6,7 +6,7 @@ import { Stepper, Step, StepLabel, StepConnector } from "@mui/material";
 const classes = {
   root: {
     width: "100%",
-    marginBottom: theme.spacing(2),
+    marginBottom: "2rem",
     // [theme.breakpoints.down("sm")]: {
     //   marginBottom: theme.spacing(1),
     // },
@@ -134,7 +134,9 @@ const CheckoutSteps = ({ activeStep }) => {
     <div style={classes.stepReader}>
       <div style={{ marginTop: "7rem" }}>
         <div style={classes.root}>
-          <Stepper activeStep={activeStep} connector={<ColorlibConnector />}>
+          <Stepper activeStep={activeStep} 
+          // connector={<ColorlibConnector />}
+          >
             {steps.map((step, index) => (
               <Step key={step.label}>
                 <StepLabel

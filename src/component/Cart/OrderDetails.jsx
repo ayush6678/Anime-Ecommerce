@@ -1,8 +1,8 @@
 import React from "react";
-import { makeStyles } from "@mui/styles";
+// import { makeStyles } from "@mui/styles";
 import Typography from "@mui/material/Typography";
 
-const useStyles = makeStyles((theme) => ({
+const useStyles ={
   rootPayment: {
     width: "100%",
     display: "flex",
@@ -17,10 +17,10 @@ const useStyles = makeStyles((theme) => ({
     width: "155px",
     height: "140px",
     objectFit: "cover",
-    [theme.breakpoints.down(899)]: {
-      width: "255px",
-      height: "240px",
-    },
+    // [theme.breakpoints.down(899)]: {
+    //   width: "255px",
+    //   height: "240px",
+    // },
   },
   details: {
     flex: 1,
@@ -30,11 +30,11 @@ const useStyles = makeStyles((theme) => ({
   productName: {
     fontWeight: "500",
     fontSize: "18px",
-    marginBottom: theme.spacing(1),
+    marginBottom: "2rem",
   },
   quantity: {
     fontSize: 16,
-    marginBottom: theme.spacing(1),
+    marginBottom: "1rem",
     color: "#00000080",
   },
   priceContainer: {
@@ -47,14 +47,14 @@ const useStyles = makeStyles((theme) => ({
   },
   discountPrice: {
     textDecoration: "line-through",
-    color: theme.palette.text.secondary,
-    marginLeft: theme.spacing(2),
+    // color: theme.palette.text.secondary,
+    marginLeft: "2rem",
     fontSize: 16,
   },
   paymentStatus: {
     color: "green",
     fontSize: 16,
-    marginTop: theme.spacing(1),
+    marginTop: "1rem",
   },
   paymentValue: {
 
@@ -62,10 +62,10 @@ const useStyles = makeStyles((theme) => ({
     marginRight: "10px",
     color: "#00000080",
   },
-}));
+};
 
 const OrderDetailsSection = ({ item, totalDiscount, totalPrice }) => {
-  const classes = useStyles();
+  const classes = useStyles;
 
   return (
     <div className={classes.rootPayment}>
