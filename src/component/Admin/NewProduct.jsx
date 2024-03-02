@@ -29,11 +29,12 @@ import {
   FormControl,
   Button,
 } from "@mui/material";
+import { useNavigate } from "react-router-dom";
 
 function NewProduct() {
   const dispatch = useDispatch();
-  // const history = useHistory();
   // const alert = useAlert();
+  const navigate = useNavigate();
 
   const { loading, error, success } = useSelector(
     (state) => state.addNewProduct
@@ -66,14 +67,7 @@ function NewProduct() {
     fileInputRef.current.click();
   };
   const categories = [
-    "Cricket Kits",
-    "Batting Gloves",
-    "Batting Pads",
-    "Bats",
     "Bags",
-    "Helmets",
-    "Balls",
-    "Stumps",
     "Shoes",
     "Clothing",
     "Accessories",
@@ -86,14 +80,16 @@ function NewProduct() {
 
     if (success) {
       // alert.success("Product Created Successfully");
-      // history.push("/admin/dashboard");
+      navigate("/admin/dashboard");
       dispatch({ type: NEW_PRODUCT_RESET });
     }
   }, [dispatch,
     // alert,
     error,
-    // history,
+    navigate,
     success]);
+
+
 
   const createProductSubmitHandler = (e) => {
     e.preventDefault();
@@ -109,6 +105,7 @@ function NewProduct() {
     });
 
     dispatch(createProduct(myForm));
+    console.log(images);
   };
 
   const createProductImagesChange = (e) => {
@@ -137,9 +134,7 @@ function NewProduct() {
       <MetaData title={"New Product"} />
       <div className="updateProduct">
         <div
-          className="toggleBox1"
-
-        // className=`toggle ? "firstBox1 : toggleBox1`
+          className={"firstBox1"}
         >
           <Sidebar />
         </div >
@@ -163,14 +158,19 @@ function NewProduct() {
               <Typography
                 variant="h5"
                 component="h1"
-                className="heading"
+                style={{
+                  textAlign: "center",
+                  marginBottom: "3px",
+                  color: "#414141",
+                  fontWeight: "bold",
+                }}
               >
                 Create Product
               </Typography>
               <TextField
                 variant="outlined"
                 fullWidth
-                className={`nameInput textField`}
+                className="nameInput textField"
                 label="Product Name"
                 required
                 value={name}
@@ -195,7 +195,7 @@ function NewProduct() {
                 value={price}
                 required
                 fullWidth
-                className={`$"passwordInput} $"textField}`}
+                className="passwordInput textField"
                 onChange={(e) => setPrice(e.target.value)}
                 InputProps={{
                   endAdornment: (
@@ -216,7 +216,7 @@ function NewProduct() {
                 label="Stock"
                 value={Stock}
                 required
-                className={`$"passwordInput} $"textField}`}
+                className="passwordInput textField"
                 onChange={(e) => setStock(e.target.value)}
                 InputProps={{
                   endAdornment: (
@@ -237,7 +237,7 @@ function NewProduct() {
                 label="Product info"
                 value={info}
                 required
-                className={`passwordInput textField`}
+                className="passwordInput textField"
                 onChange={(e) => setInfo(e.target.value)}
                 InputProps={{
                   endAdornment: (
@@ -256,7 +256,17 @@ function NewProduct() {
 
               <div className="selectOption">
                 {!isCategory && (
-                  <Typography variant="body2" className="labelText">
+                  <Typography variant="body2" style={{
+                    color: "#414141",
+                    fontSize: "14px",
+                    position: "absolute",
+                    top: "50%",
+                    transform: "translateY(-50%)",
+                    left: "14px",
+                    pointerEvents: "none",
+                    // opacity: (props) => (props.category ? 0 : 1);
+                    transition: "opacity 0.3s ease"
+                  }}>
                     Choose Category
                   </Typography>
                 )}
@@ -314,7 +324,7 @@ function NewProduct() {
                   endAdornment: (
                     <InputAdornment position="end">
                       <DescriptionIcon
-                        className="descriptionIcon"
+                        style={{ marginRight: "1" }}
                       />
                     </InputAdornment>
                   ),
@@ -342,7 +352,7 @@ function NewProduct() {
                 <label htmlFor="avatar-input">
                   <Button
                     variant="contained"
-                    color="default"
+                    color="primary"
                     className="uploadAvatarButton"
                     startIcon={
                       <CloudUploadIcon

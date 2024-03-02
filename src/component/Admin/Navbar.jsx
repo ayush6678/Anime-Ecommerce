@@ -10,36 +10,36 @@ const useStyles = {
     display: "flex",
     alignItems: "center",
     justifyContent: "space-between",
-   zIndex: 999,
+    zIndex: 999,
     background: "#ffffff",
-    
+
     width: "100%",
     padding: "1.5rem 1rem 1rem 1rem",
     boxShadow:
       "1px 1px 2px rgba(0, 0, 0, 0.1), 2px 2px 4px rgba(0, 0, 0, 0.2), 4px 4px 8px rgba(0, 0, 0, 0.3)",
 
-    // [theme.breakpoints.between("999")]: {
-    //   flexDirection: "row",
-    //   alignItems: "center",
-    //   padding: "1rem",
-    // },
+    '@media (minWidth: 999px)': {
+      flexDirection: "row",
+      alignItems: "center",
+      padding: "1rem",
+    },
   },
 
   menuIcon: {
     display: "none",
-    // [theme.breakpoints.down("999")]: {
-    //   display: "block",
-    //   fontSize: "2rem",
-    //   "& svg": {
-    //     fontSize: "2rem",
-    //     "&:hover": {
-    //       color: "#ed1c24",
-    //     },
-    //   },
-    //   "&:hover": {
-    //     transform: "scale(1.1)", // Hover scale effect
-    //   },
-    // },
+    '@media (maxWidth: 999px)': {
+      display: "block",
+      fontSize: "2rem",
+      "& svg": {
+        fontSize: "2rem",
+        "&:hover": {
+          color: "#ed1c24",
+        },
+      },
+      "&:hover": {
+        transform: "scale(1.1)", // Hover scale effect
+      },
+    },
   },
   dashboardHead: {
     fontSize: "2rem",
@@ -48,18 +48,18 @@ const useStyles = {
     textShadow: "2px 2px 4px rgba(0, 0, 0, 0.1)",
 
     // Responsive styles
-    // [theme.breakpoints.down("sm")]: {
-    //   fontSize: "1.5rem",
-    //   marginBottom: "0.5rem",
-    // },
-    // [theme.breakpoints.down("999")]: {
-    //   fontSize: "1.8rem",
-    //   marginBottom: 0,
-    // },
-    // [theme.breakpoints.down("xs")]: {
-    //   marginRight: "1.5rem",
-    //   fontSize: "1.8rem",
-    // },
+    '@media (maxWidth: 600px)': {
+      fontSize: "1.5rem",
+      marginBottom: "0.5rem",
+    },
+    '@media (maxWidth: 999px)': {
+      fontSize: "1.8rem",
+      marginBottom: 0,
+    },
+    '@media (maxWidth: 599.95px)': {
+      marginRight: "1.5rem",
+      fontSize: "1.8rem",
+    },
   },
   contactButton: {
     padding: "10px 30px",
@@ -74,17 +74,17 @@ const useStyles = {
     transition: "background-color 0.3s",
     marginRight: "2rem",
     // Responsive styles
-    // [theme.breakpoints.down("sm")]: {
-    //   fontSize: "14px",
-    //   padding: "8px 14px",
-    // },
-    // [theme.breakpoints.between("sm", "md")]: {
-    //   fontSize: "14px",
-    //   padding: "7px 15px",
-    // },
-    // [theme.breakpoints.down("xs")]: {
-    //   display: "none",
-    // },
+    '@media (maxWidth: 600px)': {
+      fontSize: "14px",
+      padding: "8px 14px",
+    },
+    '@media (minWidth: 600px) and (maxWidth: 959px)': {
+      fontSize: "14px",
+      padding: "7px 15px",
+    },
+    '@media (maxWidth: 599.95px)': {
+      display: "none",
+    },
 
     "&:hover": {
       background: "#ed1c24",
@@ -94,31 +94,31 @@ const useStyles = {
     height: "3.5rem",
     alignSelf: "center",
     paddingLeft: "25px",
-  "& img": {
-    height: "100%",
-    width: "auto",
-  },
+    "& img": {
+      height: "100%",
+      width: "auto",
+    },
 
   },
-}; 
+};
 
 const Navbar = ({ toggleHandler }) => {
   const classes = useStyles;
 
   return (
-    <nav className={classes.navbar}>
-      <IconButton className={classes.menuIcon} onClick={toggleHandler}>
+    <nav style={classes.navbar}>
+      <IconButton style={classes.menuIcon} onClick={toggleHandler}>
         <MenuIcon fontSize="2rem" />
       </IconButton>
-      <div className={classes.dashboardHead}>
+      <div style={classes.dashboardHead}>
         <Link
           to="/admin/dashboard"
-          style={{ textDecoration: "none", color: "none" , width: "100%" , height: "100%"}}
+          style={{ textDecoration: "none", color: "none", width: "100%", height: "100%" }}
         >
           <img
             src={require("../../Image/logo.png")}
             alt="logo"
-            className={classes.headerBottom__logo_main}
+            style={classes.headerBottom__logo_main}
           />
         </Link>
       </div>
@@ -126,7 +126,7 @@ const Navbar = ({ toggleHandler }) => {
         to="/contact"
         style={{ textDecoration: "none", color: "none" }}
       >
-        <Button className={classes.contactButton}>Contact Us</Button>
+        <Button style={classes.contactButton}>Contact Us</Button>
       </Link>
     </nav>
   );

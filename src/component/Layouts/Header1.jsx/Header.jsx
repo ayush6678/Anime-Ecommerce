@@ -5,15 +5,15 @@ import "./Header.css";
 import CartIcon from "./CartIcon";
 import LocationOnIcon from "@mui/icons-material/LocationOn";
 import { Link } from "react-router-dom";
-// import { useHistory } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 import Sidebar from "./Sidebar";
-// import { useSelector } from "react-redux";
+import { useSelector } from "react-redux";
 
-// import ProfileModal from "./ProfileModel";
+import ProfileModal from "./ProfileModel";
 
 function Header() {
-  // const history = useHistory();
-  // const { isAuthenticated, user } = useSelector((state) => state.userData);
+  const navigate = useNavigate();
+  const { isAuthenticated, user } = useSelector((state) => state.userData);
 
   const [searchBarActive, setSearchBarActive] = useState(false);
 
@@ -41,11 +41,11 @@ function Header() {
   // this is for handle searching ...
   const handleSearchFormSubmit = (event) => {
     event.preventDefault();
-    // if (searchValue.trim()) {
-    //   history.push(`/products/${searchValue}`);
-    // } else {
-    //   history.push("/products");
-    // }
+    if (searchValue.trim()) {
+      navigate(`/products/${searchValue}`);
+    } else {
+      navigate("/products");
+    }
   };
 
   // this is for sideBar Toggle Button
@@ -70,21 +70,21 @@ function Header() {
             </div>
 
             <div className="headerLogin">
-              {/* {isAuthenticated ? (
+              {isAuthenticated ? (
                 <Link
                   to="/account"
                   style={{ color: "inherit", textDecoration: "none" }}
                 >
                   <button>My Account</button>
                 </Link>
-              ) : ( */}
-              <Link
-                to="/signup"
-                style={{ color: "inherit", textDecoration: "none" }}
-              >
-                <button>Sign Up</button>
-              </Link>
-              {/* )} */}
+              ) : (
+                <Link
+                  to="/signup"
+                  style={{ color: "inherit", textDecoration: "none" }}
+                >
+                  <button>Sign Up</button>
+                </Link>
+              )}
             </div>
           </div>
         </div>
@@ -108,8 +108,8 @@ function Header() {
                 {sideMenu && (
                   <Sidebar
                     handleSideBarMenu={handleSideBarMenu}
-                  // isAuthenticated={isAuthenticated}
-                  // user={user}
+                    isAuthenticated={isAuthenticated}
+                    user={user}
                   />
                 )}
               </span>
@@ -127,11 +127,11 @@ function Header() {
           </div>
           {!searchBarActive && (
             <Link to="/">
-              {/* <img
+              <img
                 src={require("../../../Image/logo.png")}
                 alt="logo"
                 className="headerBottom__logo_main"
-              /> */}
+              />
             </Link>
           )}
 
@@ -179,7 +179,7 @@ function Header() {
               </Link>
             </span>
             <span>
-              {/* <ProfileModal user={user} isAuthenticated={isAuthenticated} /> */}
+              <ProfileModal user={user} isAuthenticated={isAuthenticated} />
             </span>
           </div>
         </div>

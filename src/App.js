@@ -11,7 +11,7 @@ import TermsAndConditions from "./Terms&Condtions/TermsAndUse";
 import Services from "./Terms&Condtions/Service";
 import PrivacyPolicy from "./Terms&Condtions/Privacy";
 import ReturnPolicyPage from "./Terms&Condtions/Return";
-
+import ProfilePage from "./component/User/Profile";
 import "./App.css";
 import Cart from "./component/Cart/Cart";
 import ProductDetails from "./component/Product/ProductDetails";
@@ -28,6 +28,9 @@ import ProcessOrder from "./component/Admin/ProcessOrder";
 // import UpdateProduct from "./component/Admin/UpdateProduct";
 import NewProduct from "./component/Admin/NewProduct";
 import ProductReviews from "./component/Admin/ProductReviews";
+import UpdateProfile from "./component/User/UpdateProfile";
+import UpdatePassword from "./component/User/UpdatePassword";
+import ResetPassword from "./component/User/ResetPassword";
 const LazyProductReviews = lazy(() =>
   import("./component/Admin/ProductReviews")
 );
@@ -37,8 +40,6 @@ function App() {
 
       <BrowserRouter>
         <Routes>
-
-
           <Route
             exact path="/"
             element={
@@ -68,6 +69,56 @@ function App() {
             element={
               <ForgotPassword />
             } />
+
+          <Route
+            exact
+            path="/profile/update"
+            element={
+              <>
+                {<Header />}
+                {/* <PrivateRoute
+                  exact
+                  path="/profile/update"
+                  component={UpdateProfile}
+                /> */}
+                <UpdateProfile />
+                <Services />
+                {<Footer />}
+              </>
+            }
+          />
+
+          <Route
+            exact
+            path="/password/update"
+            element={
+              <>
+                {<Header />}
+                {/* <PrivateRoute
+                  exact
+                  path="/password/update"
+                  component={UpdatePassword}
+                /> */}
+                <UpdatePassword />
+                <Services />
+                {<Footer />}
+              </>
+            }
+          />
+
+          <Route
+            exact
+            path="/password/reset/:token"
+            element={
+              <>
+                {<Header />}
+                <ResetPassword />
+                <Services />
+                {<Footer />}
+              </>
+            }
+          />
+
 
           <Route
             exact
@@ -256,6 +307,19 @@ function App() {
             path="/admin/user/:id"
             element={UpdateUser}
           /> */}
+          <Route
+            exact
+            path="/account"
+            element={
+              <>
+                {<Header />}
+                {/* <Route exact path="/account" element={Profile} /> */}
+                <ProfilePage />
+                <Services />
+                {<Footer />}
+              </>
+            }
+          />
         </Routes>
 
       </BrowserRouter>

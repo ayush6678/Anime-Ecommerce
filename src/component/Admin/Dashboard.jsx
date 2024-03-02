@@ -13,7 +13,7 @@ import { getAllOrders } from "../../actions/orderAction";
 import { getAllUsers } from "../../actions/userAction";
 import Navbar from "./Navbar";
 import Sidebar from "./Siderbar";
-// import { useHistory } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 // import { makeStyles } from "@mui/styles";
 import { Typography } from "@mui/material";
 import ProductImg from "../../Image/admin/products.png";
@@ -41,9 +41,9 @@ const useStyles = {
     borderRadius: "5px",
     boxShadow: "0px 0px 10px 0px rgba(0, 0, 0, 0.5)",
     display: "block",
-    // [theme.breakpoints.down("999")]: {
-    //   display: "none",
-    // },
+    '@media (minWidth: 999px)': {
+      display: "none"
+    }
   },
 
   toggleBox: {
@@ -66,9 +66,9 @@ const useStyles = {
     flexDirection: "column",
     gap: "1rem",
     justifyContent: "center",
-    // [theme.breakpoints.down("999")]: {
-    //   width: "100%",
-    // },
+    '@media (maxWidth: 999px)': {
+      width: "100%",
+    },
   },
   navBar: {
     margin: "0rem",
@@ -81,13 +81,12 @@ const useStyles = {
     height: "15rem",
     gap: "1rem",
     margin: "1rem 0 0 0",
-
-    // [theme.breakpoints.down("sm")]: {
-    //   flexDirection: "column",
-    //   height: "20rem",
-    //   alignItems: "center",
-    //   marginTop: "7rem !important",
-    // },
+    '@media (maxWidth: 600px)': { //sm
+      flexDirection: "column",
+      height: "20rem",
+      alignItems: "center",
+      marginTop: "7rem !important",
+    },
   },
   cardContainer: {
     display: "flex",
@@ -108,26 +107,26 @@ const useStyles = {
       backgroundColor: "#ed1c24 ",
       boxShadow: "0px 0px 10px rgba(0, 0, 0, black) !important",
     },
-    // [theme.breakpoints.between("sm", "md")]: {
-    //   width: "32% !important",
-    //   marginBottom: "1rem !important",
-    //   padding: "1rem 2rem ! important",
-    // },
-    // [theme.breakpoints.down("sm")]: {
-    //   width: "85% !important",
-    //   marginBottom: "1rem !important",
-    //   padding: "2rem 2rem ! important",
-    // },
-    // [theme.breakpoints.down("xs")]: {
-    //   width: "85%",
+    '@media (minWidth: 600px) and (maxWidth: 959px)': { //b/w sm and md
+      width: "32% !important",
+      marginBottom: "1rem !important",
+      padding: "1rem 2rem ! important",
+    },
+    '@media (maxWidth: 600px)': {
+      width: "85% !important",
+      marginBottom: "1rem !important",
+      padding: "2rem 2rem ! important",
+    },
+    '@media (maxWidth: 599.95px)': { //xs
+      width: "85%",
 
-    //   padding: "1.2rem",
-    //   margin: "0   auto",
-    //   marginBottom: "1rem",
-    //   "&:hover": {
-    //     transform: "scale(1.05) !important",
-    //   },
-    // },
+      padding: "1.2rem",
+      margin: "0   auto",
+      marginBottom: "1rem",
+      "&:hover": {
+        transform: "scale(1.05) !important",
+      },
+    },
   },
   textContainer: {
     marginTop: "0.5rem",
@@ -140,35 +139,35 @@ const useStyles = {
     fontWeight: 800,
     marginBottom: "0.5rem",
     textShadow: "1px 1px 2px black",
-    // [theme.breakpoints.down("md")]: {
-    //   fontSize: "18px",
-    // },
-    // [theme.breakpoints.down("sm")]: {
-    //   fontSize: "22px",
-    // },
+    '@media (maxWidth: 959.95px)': {//md
+      fontSize: "18px",
+    },
+    '@media (maxWidth: 600px)': { //sm
+      fontSize: "22px",
+    },
   },
   number: {
     fontSize: "1.5rem",
     fontWeight: 500,
     textShadow: "1px 1px 2px black",
   },
-  headerConetnt: {
+  headerContent: {
     display: "flex",
     gap: "1rem",
     alignItems: "center",
     color: "white",
 
-    // [theme.breakpoints.down("md")]: {
-    //   "& svg": {
-    //     fontSize: "2rem",
-    //   },
-    // },
+    '@media (maxWidth: 959.95px)': {
+      "& svg": {
+        fontSize: "2rem",
+      },
+    },
 
-    // [theme.breakpoints.down("sm")]: {
-    //   "& svg": {
-    //     fontSize: "3rem",
-    //   },
-    // },
+    '@media (maxWidth: 600px)': {//sm
+      "& svg": {
+        fontSize: "3rem",
+      },
+    },
   },
   revenue: {
     width: "100%",
@@ -177,10 +176,10 @@ const useStyles = {
     alignItems: "center",
     justifyContent: "center",
     margin: "-2.5rem auto 0",
-    // [theme.breakpoints.down("sm")]: {
-    //   flexDirection: "column",
-    //   marginTop: "5rem !important",
-    // },
+    '@media (maxWidth: 600px)': {
+      flexDirection: "column",
+      marginTop: "5rem !important",
+    },
   },
   doughnutChart: {
     height: "fit-content",
@@ -190,24 +189,24 @@ const useStyles = {
     boxShadow: "0px 0px 10px 0px rgba(0, 0, 0, 0.5)",
     padding: "1rem 2rem",
     margin: "0 1rem",
-    // [theme.breakpoints.down("md")]: {
-    //   width: "30%",
-    //   padding: "1rem 3rem",
-    //   ".highcharts-background": {
-    //     height: "350px !important",
-    //   },
-    // },
-    // [theme.breakpoints.down("sm")]: {
-    //   width: "85%",
-    //   padding: "2rem",
-    //   marginTop: "2rem",
-    // },
+    '@media (maxWidth: 959.95px)': {
+      width: "30%",
+      padding: "1rem 3rem",
+      ".highcharts-background": {
+        height: "350px !important",
+      },
+    },
+    '@media (maxWidth: 600px)': {
+      width: "85%",
+      padding: "2rem",
+      marginTop: "2rem",
+    },
 
-    // [theme.breakpoints.down("xs")]: {
-    //   width: "85%",
-    //   marginBottom: "1rem",
-    //   padding: "1.2rem",
-    // },
+    '@media (maxWidth: 599.95px)': {
+      width: "85%",
+      marginBottom: "1rem",
+      padding: "1.2rem",
+    },
   },
   revnueContainer: {
     width: "42%",
@@ -223,28 +222,28 @@ const useStyles = {
     boxShadow: "0px 0px 10px 0px rgba(0, 0, 0, 0.5)",
     transition: "background-color 0.3s",
 
-    // [theme.breakpoints.down("sm")]: {
+    // '@media (maxWidth: 600px)': {
     //   width: "85% !important",
     //   padding: "1rem",
     //   height: "250px",
     // },
 
-    // [theme.breakpoints.down("md")]: {
-    //   width: "30%",
-    //   padding: "1rem 3rem",
-    // },
-    // [theme.breakpoints.down("sm")]: {
-    //   marginTop: "1rem",
-    //   width: "85% !important",
-    //   padding: "2rem !important",
-    //   height: "250px",
-    // },
+    '@media (maxWidth: 959.95px)': {
+      width: "30%",
+      padding: "1rem 3rem",
+    },
+    '@media (maxWidth: 600px)': {
+      marginTop: "1rem",
+      width: "85% !important",
+      padding: "2rem !important",
+      height: "250px",
+    },
 
-    // [theme.breakpoints.down("xs")]: {
-    //   width: "85%",
-    //   marginBottom: "1rem",
-    //   padding: "1rem !important",
-    // },
+    '@media (maxWidth: 599.95px)': {
+      width: "85%",
+      marginBottom: "1rem",
+      padding: "1rem !important",
+    },
   },
   lineChart: {
     width: "90%",
@@ -256,24 +255,26 @@ const useStyles = {
     padding: "2rem",
     margin: "1rem auto",
 
-    // [theme.breakpoints.down("sm")]: {
-    //   width: "85%",
-    // },
+    '@media (maxWidth: 600px)': {
+      width: "85%",
+    },
 
-    // [theme.breakpoints.down("xs")]: {
-    //   width: "85%",
-    //   marginBottom: "1rem",
-    //   padding: "1.2rem",
-    // },
+    '@media (maxWidth: 599.95px)': {
+      width: "85%",
+      marginBottom: "1rem",
+      padding: "1.2rem",
+    },
   },
 };
 
 function Dashboard() {
   const classes = useStyles;
-  // const history = useHistory();
+  const navigate = useNavigate();
   const dispatch = useDispatch();
   const [toggle, setToggle] = useState(false);
-  const { products, loading, error } = useSelector((state) => state.products);
+  const { products,
+    // loading,
+    error } = useSelector((state) => state.products);
   const { orders, error: ordersError } = useSelector(
     (state) => state.allOrders
   );
@@ -291,25 +292,30 @@ function Dashboard() {
     });
 
 
-
   useEffect(() => {
     if (error) {
-      alert.error(error);
+      // alert.error(error);
       dispatch(clearErrors);
     }
     if (usersError) {
-      alert.error(usersError);
+      // alert.error(usersError);
       dispatch(clearErrors);
     }
     if (ordersError) {
-      alert.error(ordersError);
+      // alert.error(ordersError);
       dispatch(clearErrors);
     }
 
     dispatch(getAllOrders());
     dispatch(getAllUsers());
     dispatch(getAdminProducts());
-  }, [dispatch, error, alert, ordersError, usersError]);
+  }, [
+    // dispatch,
+    // error,
+    //  alert,
+    // ordersError,
+    // usersError
+  ]);
 
   // togle handler =>
   const toggleHandler = () => {
@@ -417,7 +423,9 @@ function Dashboard() {
         type: "pie",
         name: "Share",
         data: [
-          ["Out of Stock", products.length - OutOfStock],
+          ["Out of Stock",
+            // products.length -
+            OutOfStock],
 
           {
             name: "Out of Stock",
@@ -445,6 +453,8 @@ function Dashboard() {
     };
   }, [toggle]);
 
+
+
   return (
     // <>
     //   {loading ? (
@@ -452,35 +462,76 @@ function Dashboard() {
     //   ) : (
     <>
       <MetaData title="Dashboard - Admin Panel" />
-      <div className={classes.dashboard}>
+      <div style={classes.dashboard}>
         <div
-          className={
-            !toggle ? `${classes.firstBox}` : `${classes.toggleBox}`
+          style={
+            !toggle ? classes.firstBox : classes.toggleBox
           }
         >
           <Sidebar />
         </div>
 
-        <div className={classes.secondBox}>
-          <div className={classes.navBar}>
+        <div style={classes.secondBox}>
+
+          <div style={classes.navBar}>
             <Navbar toggleHandler={toggleHandler} />
           </div>
 
-          <div className={classes.summaryCard}>
+          <div style={classes.summaryCard}>
             <div
-              className={classes.cardContainer}
               style={{
-                backgroundImage: `url(${ProductImg})`,
-                backgroundSize: "cover",
+
+                display: "flex",
+                flexDirection: "column",
+                alignItems: "center",
+                justifyContent: "center",
+                backgroundColor: "#414141",
+                margin: "0 1rem ",
+                width: "30%",
+                height: "10rem",
+
+                borderRadius: "5px",
+                boxShadow: "0px 0px 10px 0px rgba(0, 0, 0, 0.5)",
                 transition: "transform 0.2s ease-in-out",
                 cursor: "pointer",
+                "&:hover": {
+                  transform: "scale(1.1) !important",
+                  backgroundColor: "#ed1c24 ",
+                  boxShadow: "0px 0px 10px rgba(0, 0, 0, black) !important",
+                },
+                '@media (minWidth: 600px) and (maxWidth: 959px)': { //b/w sm and md
+                  width: "32% !important",
+                  marginBottom: "1rem !important",
+                  padding: "1rem 2rem ! important",
+                },
+                '@media (maxWidth: 600px)': {
+                  width: "85% !important",
+                  marginBottom: "1rem !important",
+                  padding: "2rem 2rem ! important",
+                },
+                '@media (maxWidth: 599.95px)': { //xs
+                  width: "85%",
+
+                  padding: "1.2rem",
+                  margin: "0   auto",
+                  marginBottom: "1rem",
+                  "&:hover": {
+                    transform: "scale(1.05) !important",
+                  },
+                },
+
+                backgroundImage: `url(${ProductImg})`,
+                backgroundSize: "cover",
+                // transition: "transform 0.2s ease-in-out",
+                // cursor: "pointer",
                 ":hover": {
                   transform: "scale(1.1)",
                 },
+
               }}
-              // onClick={() => history.push("/admin/products")}
+              onClick={() => navigate("/admin/products")}
             >
-              <div className={classes.headerConetnt}>
+              <div style={classes.headerContent}>
                 <ShoppingCart
                   fontSize="large"
                   style={{
@@ -489,31 +540,70 @@ function Dashboard() {
                   }}
                 />
 
-                <Typography variant="h6" className={classes.heading}>
+                <Typography variant="h6" style={classes.heading}>
                   Total Products
                 </Typography>
               </div>
-              <div className={classes.textContainer}>
-                <Typography variant="body2" className={classes.number}>
+              <div style={classes.textContainer}>
+                <Typography variant="body2" style={classes.number}>
                   {products && products.length}
                 </Typography>
               </div>
             </div>
 
             <div
-              className={classes.cardContainer}
+
               style={{
-                backgroundImage: `url(${ordersImg})`,
-                backgroundSize: "cover",
+                display: "flex",
+                flexDirection: "column",
+                alignItems: "center",
+                justifyContent: "center",
+                backgroundColor: "#414141",
+                margin: "0 1rem ",
+                width: "30%",
+                height: "10rem",
+
+                borderRadius: "5px",
+                boxShadow: "0px 0px 10px 0px rgba(0, 0, 0, 0.5)",
                 transition: "transform 0.2s ease-in-out",
                 cursor: "pointer",
+                "&:hover": {
+                  transform: "scale(1.1) !important",
+                  backgroundColor: "#ed1c24 ",
+                  boxShadow: "0px 0px 10px rgba(0, 0, 0, black) !important",
+                },
+                '@media (minWidth: 600px) and (maxWidth: 959px)': { //b/w sm and md
+                  width: "32% !important",
+                  marginBottom: "1rem !important",
+                  padding: "1rem 2rem ! important",
+                },
+                '@media (maxWidth: 600px)': {
+                  width: "85% !important",
+                  marginBottom: "1rem !important",
+                  padding: "2rem 2rem ! important",
+                },
+                '@media (maxWidth: 599.95px)': { //xs
+                  width: "85%",
+
+                  padding: "1.2rem",
+                  margin: "0   auto",
+                  marginBottom: "1rem",
+                  "&:hover": {
+                    transform: "scale(1.05) !important",
+                  },
+                },
+
+                backgroundImage: `url(${ordersImg})`,
+                backgroundSize: "cover",
+                // transition: "transform 0.2s ease-in-out",
+                // cursor: "pointer",
                 ":hover": {
                   transform: "scale(1.1)",
                 },
               }}
-              // onClick={() => history.push("/admin/orders")}
+              onClick={() => navigate("/admin/orders")}
             >
-              <div className={classes.headerConetnt}>
+              <div style={classes.headerContent}>
                 <AssignmentInd
                   fontSize="large"
                   style={{
@@ -521,31 +611,70 @@ function Dashboard() {
                     boxShadow: "2px 2px 4px rgba(0, 0, 0, 0.5)",
                   }}
                 />
-                <Typography variant="h6" className={classes.heading}>
+                <Typography variant="h6" style={classes.heading}>
                   Total Orders
                 </Typography>
               </div>
-              <div className={classes.textContainer}>
-                <Typography variant="body2" className={classes.number}>
+              <div style={classes.textContainer}>
+                <Typography variant="body2" style={classes.number}>
                   {orders && orders.length}
                 </Typography>
               </div>
             </div>
 
             <div
-              className={classes.cardContainer}
+
               style={{
-                backgroundImage: `url(${usersImg})`,
-                backgroundSize: "cover",
+                display: "flex",
+                flexDirection: "column",
+                alignItems: "center",
+                justifyContent: "center",
+                backgroundColor: "#414141",
+                margin: "0 1rem ",
+                width: "30%",
+                height: "10rem",
+
+                borderRadius: "5px",
+                boxShadow: "0px 0px 10px 0px rgba(0, 0, 0, 0.5)",
                 transition: "transform 0.2s ease-in-out",
                 cursor: "pointer",
+                "&:hover": {
+                  transform: "scale(1.1) !important",
+                  backgroundColor: "#ed1c24 ",
+                  boxShadow: "0px 0px 10px rgba(0, 0, 0, black) !important",
+                },
+                '@media (minWidth: 600px) and (maxWidth: 959px)': { //b/w sm and md
+                  width: "32% !important",
+                  marginBottom: "1rem !important",
+                  padding: "1rem 2rem ! important",
+                },
+                '@media (maxWidth: 600px)': {
+                  width: "85% !important",
+                  marginBottom: "1rem !important",
+                  padding: "2rem 2rem ! important",
+                },
+                '@media (maxWidth: 599.95px)': { //xs
+                  width: "85%",
+
+                  padding: "1.2rem",
+                  margin: "0   auto",
+                  marginBottom: "1rem",
+                  "&:hover": {
+                    transform: "scale(1.05) !important",
+                  },
+                },
+
+                backgroundImage: `url(${usersImg})`,
+                backgroundSize: "cover",
+                // transition: "transform 0.2s ease-in-out",
+                // cursor: "pointer",
                 ":hover": {
                   transform: "scale(1.1)",
                 },
               }}
-              // onClick={() => history.push("/admin/users")}
+              onClick={() => navigate("/admin/users")}
             >
-              <div className={classes.headerConetnt}>
+              <div style={classes.headerContent}>
                 <People
                   fontSize="large"
                   style={{
@@ -553,20 +682,20 @@ function Dashboard() {
                     boxShadow: "2px 2px 4px rgba(0, 0, 0, 0.5)",
                   }}
                 />
-                <Typography variant="h6" className={classes.heading}>
+                <Typography variant="h6" style={classes.heading}>
                   Total Users
                 </Typography>
               </div>
-              <div className={classes.textContainer}>
-                <Typography variant="body2" className={classes.number}>
+              <div style={classes.textContainer}>
+                <Typography variant="body2" style={classes.number}>
                   {users && users.length}
                 </Typography>
               </div>
             </div>
           </div>
 
-          <div className={classes.revenue}>
-            <div className={classes.doughnutChart}>
+          <div style={classes.revenue}>
+            <div style={classes.doughnutChart}>
               <HighchartsReact
                 highcharts={Highcharts}
                 options={doughnutOptions}
@@ -574,17 +703,53 @@ function Dashboard() {
             </div>
 
             <div
-              className={classes.revnueContainer}
+              // style={classes.revnueContainer}
               style={{
+                width: "42%",
+                display: "flex",
+                flexDirection: "column",
+                alignItems: "center",
+                justifyContent: "center",
+                margin: "0 1rem",
+                height: "400px",
+                backgroundColor: "black",
+                borderRadius: "5px",
+                padding: "1rem 2rem",
+                boxShadow: "0px 0px 10px 0px rgba(0, 0, 0, 0.5)",
+                transition: "background-color 0.3s",
+
+                // '@media (maxWidth: 600px)': {
+                //   width: "85% !important",
+                //   padding: "1rem",
+                //   height: "250px",
+                // },
+
+                '@media (maxWidth: 959.95px)': {
+                  width: "30%",
+                  padding: "1rem 3rem",
+                },
+                '@media (maxWidth: 600px)': {
+                  marginTop: "1rem",
+                  width: "85% !important",
+                  padding: "2rem !important",
+                  height: "250px",
+                },
+
+                '@media (maxWidth: 599.95px)': {
+                  width: "85%",
+                  marginBottom: "1rem",
+                  padding: "1rem !important",
+                },
+
                 backgroundImage: `url(${ProductImg})`,
                 backgroundSize: "cover",
-                transition: "transform 0.2s ease-in-out",
-                borderRadius: "5px",
+                // transition: "transform 0.2s ease-in-out",
+                // borderRadius: "5px",
 
-                width: "42%",
+                // width: "42%",
               }}
             >
-              <div className={classes.headerConetnt}>
+              <div style={classes.headerContent}>
                 <BarChart
                   fontSize="large"
                   style={{
@@ -593,24 +758,25 @@ function Dashboard() {
                   }}
                 />
 
-                <Typography variant="h6" className={classes.heading}>
+                <Typography variant="h6" style={classes.heading}>
                   Total Revenue
                 </Typography>
               </div>
-              <div className={classes.textContainer}>
-                <Typography variant="body2" className={classes.number}>
+              <div style={classes.textContainer}>
+                <Typography variant="body2" style={classes.number}>
                   ₹{totalAmount.toFixed(2)}
                 </Typography>
               </div>
             </div>
           </div>
 
-          <div className={classes.lineChart}>
+          <div style={classes.lineChart}>
             <HighchartsReact
               highcharts={Highcharts}
               options={lineOptions}
             />
           </div>
+
         </div>
       </div>
     </>

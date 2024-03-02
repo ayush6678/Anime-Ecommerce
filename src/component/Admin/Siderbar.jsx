@@ -1,7 +1,7 @@
 import React from "react";
 import {
   Link,
-  // useHistory
+  useNavigate
 } from "react-router-dom";
 import { Avatar, Typography, Button } from "@mui/material";
 // import { makeStyles } from "@mui/material";
@@ -109,38 +109,47 @@ function Sidebar() {
   const { user, loading } = useSelector((state) => state.userData);
 
 
-  // const history = useHistory();
+  const navigate = useNavigate();
 
   function accountHandler() {
-
-    // history.push("/account");
+    navigate("/account");
   }
 
   return (
     <>
       {!loading && (
         <>
-          <div className={classes.sidebar}>
+          <div style={classes.sidebar}>
             <Avatar
-              src={user && user.avatar.url}
+              src={user && user.avatar
+                // .url
+              }
               alt="User Avatar"
-              className={classes.avatar11}
+              style={classes.avatar11}
             />
-            <Typography variant="subtitle1" className={classes.name}>
+            <Typography variant="subtitle1" style={classes.name}>
               {user && user.name}
             </Typography>
-            <Typography variant="subtitle2" className={classes.email}>
+            <Typography variant="subtitle2" style={classes.email}>
               {user && user.email}
             </Typography>
-            <div className={classes.divider} />
-            <ul className={classes.sideBarMenu}>
+            <div style={classes.divider} />
+            <ul style={classes.sideBarMenu}>
               <Link
                 to="/admin/dashboard"
                 style={{ color: "inherit", textDecoration: "none" }}
               >
-                <li className={classes.sideBarMenuItem}>
+                <li style={classes.sideBarMenuItem}>
                   <DashboardIcon fontSize="large" />
-                  <span className={classes.sideBarMenuItem_text}>
+                  <span style={{
+                    color: "#414141",
+                    fontSize: "1rem",
+                    fontWeight: "500",
+                    marginLeft: "1rem",
+                    textDecoration: "none",
+                    textDecorationLine: "none",
+                    transition: "color 0.3s ease",
+                  }}>
                     {" "}
                     Dashboard
                   </span>
@@ -148,9 +157,17 @@ function Sidebar() {
               </Link>
 
               <Link to="/" style={{ color: "inherit", textDecoration: "none" }}>
-                <li className={classes.sideBarMenuItem}>
+                <li style={classes.sideBarMenuItem}>
                   <HomeIcon fontSize="large" />
-                  <span className={classes.sideBarMenuItem_text}>Home</span>
+                  <span style={{
+                    color: "#414141",
+                    fontSize: "1rem",
+                    fontWeight: "500",
+                    marginLeft: "1rem",
+                    textDecoration: "none",
+                    textDecorationLine: "none",
+                    transition: "color 0.3s ease",
+                  }}>Home</span>
                 </li>
               </Link>
 
@@ -158,10 +175,18 @@ function Sidebar() {
                 to="/admin/products"
                 style={{ color: "inherit", textDecoration: "none" }}
               >
-                <li className={classes.sideBarMenuItem}>
+                <li style={classes.sideBarMenuItem}>
                   <PostAddIcon fontSize="large" />
 
-                  <span className={classes.sideBarMenuItem_text}>
+                  <span style={{
+                    color: "#414141",
+                    fontSize: "1rem",
+                    fontWeight: "500",
+                    marginLeft: "1rem",
+                    textDecoration: "none",
+                    textDecorationLine: "none",
+                    transition: "color 0.3s ease",
+                  }}>
                     {" "}
                     Products
                   </span>
@@ -171,9 +196,17 @@ function Sidebar() {
                 to="/admin/new/product"
                 style={{ color: "inherit", textDecoration: "none" }}
               >
-                <li className={classes.sideBarMenuItem}>
+                <li style={classes.sideBarMenuItem}>
                   <AddIcon fontSize="large" />
-                  <span className={classes.sideBarMenuItem_text}>
+                  <span style={{
+                    color: "#414141",
+                    fontSize: "1rem",
+                    fontWeight: "500",
+                    marginLeft: "1rem",
+                    textDecoration: "none",
+                    textDecorationLine: "none",
+                    transition: "color 0.3s ease",
+                  }}>
                     Add Product
                   </span>
                 </li>
@@ -183,18 +216,34 @@ function Sidebar() {
                 to="/admin/orders"
                 style={{ color: "inherit", textDecoration: "none" }}
               >
-                <li className={classes.sideBarMenuItem}>
+                <li style={classes.sideBarMenuItem}>
                   <ListAltIcon fontSize="large" />
-                  <span className={classes.sideBarMenuItem_text}>Orders</span>
+                  <span style={{
+                    color: "#414141",
+                    fontSize: "1rem",
+                    fontWeight: "500",
+                    marginLeft: "1rem",
+                    textDecoration: "none",
+                    textDecorationLine: "none",
+                    transition: "color 0.3s ease",
+                  }}>Orders</span>
                 </li>
               </Link>
               <Link
                 to="/admin/reviews"
                 style={{ color: "inherit", textDecoration: "none" }}
               >
-                <li className={classes.sideBarMenuItem}>
+                <li style={classes.sideBarMenuItem}>
                   <RateReviewIcon fontSize="large" />
-                  <span className={classes.sideBarMenuItem_text}>Reviews</span>
+                  <span style={{
+                    color: "#414141",
+                    fontSize: "1rem",
+                    fontWeight: "500",
+                    marginLeft: "1rem",
+                    textDecoration: "none",
+                    textDecorationLine: "none",
+                    transition: "color 0.3s ease",
+                  }}>Reviews</span>
                 </li>
               </Link>
 
@@ -202,15 +251,23 @@ function Sidebar() {
                 to="/contact"
                 style={{ color: "inherit", textDecoration: "none" }}
               >
-                <li className={classes.sideBarMenuItem}>
+                <li style={classes.sideBarMenuItem}>
                   <ContactPageIcon fontSize="large" />
-                  <span className={classes.sideBarMenuItem_text}>Contact</span>
+                  <span style={{
+                    color: "#414141",
+                    fontSize: "1rem",
+                    fontWeight: "500",
+                    marginLeft: "1rem",
+                    textDecoration: "none",
+                    textDecorationLine: "none",
+                    transition: "color 0.3s ease",
+                  }}>Contact</span>
                 </li>
               </Link>
             </ul>
-            <div className={classes.divider} />
+            <div style={classes.divider} />
             <Button
-              className={classes.button}
+              style={classes.button}
               onClick={accountHandler}
               variant="contained"
             >

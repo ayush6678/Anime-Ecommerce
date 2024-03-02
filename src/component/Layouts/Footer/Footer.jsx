@@ -180,11 +180,11 @@ const Footer = () => {
               </div>
             </div>
 
-            <div class="foot_menu_container">
+            <div className="foot_menu_container">
               {footMenu.map((item) => {
                 const { id, title, menu } = item;
                 return (
-                  <div class="foot_menu foot2" key={id}>
+                  <div className="foot_menu foot2" key={id}>
                     <h4>{title}</h4>
                     <ul>
                       {menu.map((item) => {

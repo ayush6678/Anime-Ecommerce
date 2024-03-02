@@ -1,18 +1,44 @@
-import {  LockOpen, Visibility, VisibilityOff } from "@mui/icons-material";
-import { Avatar, Button, Checkbox, FormControlLabel, Grid, TextField, Typography } from "@mui/material";
+import React, { useState, useEffect } from "react";
+import {
+    TextField,
+    FormControlLabel,
+    Checkbox,
+    Button,
+    Typography,
+    Grid,
+    Avatar,
+} from "@mui/material";
 import "./LoginFormStyle.css";
-import { useState } from "react";
+import Visibility from "@mui/icons-material/Visibility";
+import VisibilityOff from "@mui/icons-material/VisibilityOff";
+import { useDispatch, useSelector } from "react-redux";
+import { useLocation, useNavigate } from "react-router-dom";
+import { login, clearErrors } from "../../actions/userAction";
+// import CricketBallLoader from "../layouts/loader/Loader";
+// import { useAlert } from "react-alert";
 import { Link } from "react-router-dom";
+// import MetaData from "../Layouts/MetaData/MetaData";
+import { LockOpen } from "@mui/icons-material";
 
 function Login() {
 
+    const navigate = useNavigate();
+
+    const location = useLocation();
+    // const history = useHistory();
+
+    const dispatch = useDispatch();
+    // const alert = useAlert();
+
+    const { isAuthenticated, loading, error } = useSelector(
+        (state) => state.userData
+    );
+
+    // const classes = useStyles();
+    const [showPassword, setShowPassword] = useState(false);
     const [email, setEmail] = useState("");
     const [password, setPassword] = useState("");
-    const [showPassword, setShowPassword] = useState(false);
     const [isValidEmail, setIsValidEmail] = useState(true);
-
-    const isSignInDisabled = !(email && password && isValidEmail);
-
 
     const handleEmailChange = (event) => {
         const newEmail = event.target.value;
@@ -21,18 +47,40 @@ function Login() {
             newEmail !== "" && /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(newEmail)
         );
     };
+
     const handlePasswordChange = (event) => {
         setPassword(event.target.value);
     };
+
     const handleShowPasswordClick = () => {
         setShowPassword(!showPassword);
     };
 
 
+    const isSignInDisabled = !(email && password && isValidEmail);
+
+
+    const redirect = location.search
+        ? location.search.split("=")[1]
+        : "/account";
+    useEffect(() => {
+        if (error) {
+            // alert.error(error);
+            dispatch(clearErrors());
+        }
+
+        if (isAuthenticated) {
+            // history.push(redirect);
+            navigate(redirect);
+        }
+    }, [dispatch, isAuthenticated, loading, error, alert,
+        navigate,
+        redirect
+    ]);
 
     function handleLoginSubmit(e) {
         e.preventDefault();
-        // dispatch(login(email, password));
+        dispatch(login(email, password));
     }
 
 

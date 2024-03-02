@@ -10,15 +10,15 @@ import { Modal, Avatar } from "@mui/material";
 import { AccountCircle as AccountCircleIcon } from "@mui/icons-material";
 import ArrowDropDownIcon from "@mui/icons-material/ArrowDropDown";
 import "./ProfileModel.css";
-// import { useHistory } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 // import { useAlert } from "react-alert";
-// import { useDispatch } from "react-redux";
-// import { logout } from "../../../actions/userAction";
+import { useDispatch } from "react-redux";
+import { logout } from "../../../actions/userAction";
 
 const ProfileModal = ({ user, isAuthenticated }) => {
   // const alert = useAlert();
-  // const dispatch = useDispatch();
-  // const history = useHistory();
+  const dispatch = useDispatch();
+  const navigate = useNavigate();
   const [isOpen, setIsOpen] = useState(false);
   const modalRef = useRef(null);
 
@@ -62,35 +62,33 @@ const ProfileModal = ({ user, isAuthenticated }) => {
 
   function dashboardHandler() {
     setIsOpen(false);
-    // history.push("/admin/dashboard");
+    navigate("/admin/dashboard");
   }
 
   function accountHandler() {
     setIsOpen(false);
-    // history.push("/account");
+    navigate("/account");
   }
 
   function ordersHandler() {
     setIsOpen(false);
-    // history.push("/orders");
+    navigate("/orders");
   }
 
   function logoutUserHandler() {
     setIsOpen(false);
-    // dispatch(logout());
+    dispatch(logout());
     alert.success("Logout Successfully");
   }
 
   function cartHandler() {
     setIsOpen(false);
-
-    // history.push("/cart");
+    navigate("/cart");
   }
 
   function loginHandler() {
     setIsOpen(false);
-
-    // history.push("/login");
+    navigate("/login");
   }
 
   return (

@@ -3,29 +3,30 @@ import Avatar from "@mui/material/Avatar";
 import Button from "@mui/material/Button";
 import Typography from "@mui/material/Typography";
 import { ExitToApp as LogoutIcon } from "@mui/icons-material";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import "./Profile.css";
 // import { useHistory } from "react-router-dom";
-// import { useDispatch, useSelector } from "react-redux";
-// import { logout } from "../../actions/userAction";
+import { useDispatch, useSelector } from "react-redux";
+import { logout } from "../../actions/userAction";
 // import { useAlert } from "react-alert";
 const ProfilePage = () => {
   // const alert = useAlert();
-  // const dispatch = useDispatch();
+  const dispatch = useDispatch();
   // const history = useHistory();
-  // const { user, isAuthenticated } = useSelector((state) => state.userData);
+  const navigate = useNavigate();
+  const { user, isAuthenticated } = useSelector((state) => state.userData);
 
   const logoutHandler = () => {
-    // dispatch(logout());
+    dispatch(logout());
     // alert.success("Logged out successfully");
-    // history.push("/login");
+    navigate("/login");
   };
-  // useEffect(() => {
-  //   // if user not logged in
-  //   if (isAuthenticated === false) {
-  //     history.push("/login");
-  //   }
-  // }, [history, isAuthenticated]);
+  useEffect(() => {
+    // if user not logged in
+    if (isAuthenticated === false) {
+      navigate("/login");
+    }
+  }, [navigate, isAuthenticated]);
 
   const createdAt = (user) => {
     const createdAt = new Date(user.createdAt);
@@ -41,6 +42,7 @@ const ProfilePage = () => {
 
     const formatter = new Intl.DateTimeFormat("en-IN", options);
     const formattedDate = formatter.format(createdAt);
+    console.log(formattedDate)
     return formattedDate;
   };
 
@@ -59,7 +61,7 @@ const ProfilePage = () => {
       <div className="profileConatiner">
         <div className="leftCotainer">
           <h4
-          
+
             className="profileHeadingLeft"
           >
             Profile Overview
@@ -67,7 +69,7 @@ const ProfilePage = () => {
           <div className="profileSection">
             <Avatar
               alt={user.name}
-              src={user.avatar.url}
+              src={user.avatar}
               className="profileAvatar"
             />
             <div className="leftDetails">

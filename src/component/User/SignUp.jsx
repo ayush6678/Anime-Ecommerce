@@ -1,10 +1,30 @@
-import { Avatar, Button, Checkbox, FormControlLabel, Grid, TextField, Typography } from "@mui/material";
-import "./LoginFormStyle.css";
-import { useState } from "react";
-import { Link, } from "react-router-dom";
-import { CloudUpload, LockOutlined, Visibility, VisibilityOff } from "@mui/icons-material";
-function SignUp() {
+import React, { useState, useEffect } from "react";
+import {
+    Avatar,
+    Button,
+    Checkbox,
+    TextField,
+    FormControlLabel,
+    Grid,
+    Typography,
+} from "@mui/material";
+// import CricketBallLoader from "../layouts/loader/Loader";
+// import MetaData from "../Layouts/MetaData/MetaData";
+import { Link } from "react-router-dom";
+import { signUp, clearErrors } from "../../actions/userAction";
+import { useDispatch, useSelector } from "react-redux";
+// import { useAlert } from "react-alert";
+// import { useHistory } from "react-router-dom";
+// import useStyles from "./LoginFromStyle";
+import Visibility from "@mui/icons-material/Visibility";
+import VisibilityOff from "@mui/icons-material/VisibilityOff";
+import CloudUpload from "@mui/icons-material/CloudUpload";
+import { LockOutlined } from "@mui/icons-material";
 
+function SignUp() {
+    
+
+    // const classes = useStyles();
     const [showPassword, setShowPassword] = useState(false);
     const [name, setName] = useState("");
     const [email, setEmail] = useState("");
@@ -21,26 +41,28 @@ function SignUp() {
         checkbox1: false,
         checkbox2: false,
     });
+    // const history = useHistory();
 
-    // const Navigate = Navigate();
-
-
-    // const dispatch = useDispatch();
+    const dispatch = useDispatch();
     // const alert = useAlert();
 
-    // const { isAuthenticated, error } = useSelector((state) => state.userData);
+    const { isAuthenticated, error } = useSelector((state) => state.userData);
 
-    // useEffect(() => {
-    //     if (error) {
-    //         alert.error(error);
-    //         dispatch(clearErrors());
-    //     }
+    useEffect(() => {
+        if (error) {
+            // alert.error(error);
+            dispatch(clearErrors());
+        }
 
-    //     if (isAuthenticated) {
-    //         alert.success("User Registered Successfully");
-    //         history.push("/account");
-    //     }
-    // }, [dispatch, isAuthenticated, loading, error, alert, history]);
+        if (isAuthenticated) {
+            // alert.success("User Registered Successfully");
+            console.log("User Registered Successfully")
+            // history.push("/account");
+        }
+    }, [dispatch, isAuthenticated, loading, error, 
+        // alert, 
+        // history
+    ]);
 
     const handleEmailChange = (event) => {
         const newEmail = event.target.value;
@@ -51,6 +73,7 @@ function SignUp() {
     };
 
     const handleAvatarChange = (event) => {
+
         const file = event.target.files[0];
         if (file) {
             const reader = new FileReader();
@@ -87,7 +110,6 @@ function SignUp() {
         }));
     };
 
-
     let isSignInDisabled = !(
         email &&
         password &&
@@ -105,7 +127,7 @@ function SignUp() {
 
 
         if (password !== confirmPassword) {
-            alert.error("Password and Confirm Password do not match");
+            // alert.error("Password and Confirm Password do not match");
             setLoading(false);
             return;
         }
@@ -116,11 +138,9 @@ function SignUp() {
         formData.set("password", password);
         formData.set("avatar", avatar);
 
-        // dispatch(signUp(formData));
+        dispatch(signUp(formData));
         setLoading(false);
     }
-
-
     return (
         <>
             <div className="formContainer">
